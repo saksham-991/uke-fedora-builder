@@ -16,5 +16,5 @@ while IFS=$'\t' read -r path expected; do
     }
     ((count+=1))
 done < <(jq -r '.files[] | [.target_path, .sha256] | @tsv' "$manifest")
-[[ $count == 74 ]] || { printf 'Expected 74 pinned firmware files; got %s\n' "$count" >&2; exit 1; }
+[[ $count == 195 ]] || { printf 'Expected 195 pinned firmware files; got %s\n' "$count" >&2; exit 1; }
 printf 'OEM RPM: %s pinned firmware files verified\n' "$count"

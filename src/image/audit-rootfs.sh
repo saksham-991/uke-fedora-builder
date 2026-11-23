@@ -52,7 +52,7 @@ while IFS=$'\t' read -r path expected; do
     ((firmware_count+=1))
 done < <(jq -r '.files[] | [.target_path, .sha256] | @tsv' \
     "$(dirname -- "${BASH_SOURCE[0]}")/../../../uke-linux-hardware-support/xiaomi-uke-firmware/manifests/local-firmware-candidates.json")
-((firmware_count == 74)) || fail "Expected 74 pinned firmware files; got $firmware_count"
+((firmware_count == 195)) || fail "Expected 195 pinned firmware files; got $firmware_count"
 touch_panel=$(cat "$output/TOUCH-PANEL")
 [[ $touch_panel == auto ]] || fail 'touch selection is not automatic'
 [[ -s $output/TOUCH-INSTALLED.sha256 ]] || fail 'touch input receipt is missing'
